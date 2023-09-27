@@ -39,7 +39,7 @@ module.exports.templateTags = [
       });
 
       const config = dotenv.parse(fs.readFileSync(path));
-      dotenvExpand( parse(config) );
+      dotenvExpand.expand( parse(config) );
 
 
       if (!config || config.error) {
