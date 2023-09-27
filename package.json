@@ -1,0 +1,33 @@
+{
+    "name": "insomnia-plugin-fpf-dotenv",
+    "version": "1.0.0",
+    "description": "Insomina plugin to get environment settings from a .env file",
+    "author": {
+        "name": "Florian Pfeffer",
+        "email": "florian.pfeffer@outlook.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pfefferf/insomnia-plugin-fpf-dotenv"
+    },
+    "bugs": {
+        "url": "https://github.com/pfefferf/insomnia-plugin-fpf-dotenv/issues"
+    },
+    "homepage": "https://github.com/pfefferf/insomnia-plugin-fpf-dotenv",
+    "keywords": [
+        "insomnia",
+        "api",
+        "insomnia-plugin"
+    ],
+    "scripts": {},
+    "license": "MIT",
+    "main": "index.js",
+    "insomnia": {
+        "name": "fpf-dotenv",
+        "description": "Plugin to get data from a .env file"
+    },
+    "dependencies": {
+        "dotenv": "^16.3.1",
+        "dotenv-expand": "^10.0.0"
+    }
+}
