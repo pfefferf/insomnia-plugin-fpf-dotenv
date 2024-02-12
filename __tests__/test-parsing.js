@@ -8,3 +8,8 @@ test('expands environment variables ', () => {
     var homedir = process.env.HOME
     expect(index.run('', env, 'HOMEDIR')).toEqual(homedir);
 })
+test('return correct key value when environment variables in env filepath', () => {
+    process.env.CWD = process.cwd();
+    const envWithVar = '%CWD%/__tests__/.env.test';
+    expect(index.run('', envWithVar, 'CHEESE')).toEqual('CAKE');
+})
