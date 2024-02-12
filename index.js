@@ -3,6 +3,10 @@ const dotenvExpand = require('dotenv-expand');
 
 const fs = require('fs');
 
+const expandPath = function( path ) {
+  return path.replace(/%([^%]+)%/g, (_,n) => process.env[n] ?? '')
+}
+
 const parse = function( config ) {
   var newObj = { 
       ignoreProcessEnv: false, 
@@ -33,12 +37,15 @@ module.exports.templateTags = [
       } 
     ],
     run(context, path, varName) {
-      fs.stat(path, function(err) {
+
+      let expandedPath = expandPath(path);
+
+      fs.stat(expandedPath, function(err) {
         if (err && err.code === 'ENOENT')
           console.log('File or directory not found');
-      });
-
-      const config = dotenv.parse(fs.readFileSync(path));
+      });      
+      
+      const config = dotenv.parse(fs.readFileSync(expandedPath));
       dotenvExpand.expand( parse(config) );
 
 
